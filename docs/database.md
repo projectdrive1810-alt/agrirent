@@ -5,34 +5,36 @@ Purpose : store user, machine, booking data
 
 ## Entities : User(Entity)
 
-            id BigInt,
-            username varchar,
-            password varchar,
-            email varchar,
-            phone varchar,
+            id BigInt PK,
+            username varchar(50) unique,
+            password varchar(255),
+            email varchar(100) unique,
+            phone varchar(10) unique,
             role enum,
             created_at timestamp
-            
-        
+
         : Machine(Entity)
 
-            id BigInt,
+            id BigInt PK,
             machine_name varchar,
             machine_type varchar,
-            owner_id BigInt,
+            owner_id BigInt FK -> users.id,
             daily_rental_price decimal,
             hourly_rental_price decimal,
             location text,
             is_available boolean,
             created_at timestamp
 
-
+        : MachineImages(Entity)
+            id BigInt PK
+            machine_id BigInt FK -> machines.id
+            image_url TEXT
 
         : Booking(Entity)
 
-            id BigInt,
-            user_id BigInt,
-            machine_id BigInt,
+            id BigInt PK,
+            user_id BigInt FK -> users.id,
+            machine_id BigInt FK -> machines.id,
             start_date date,
             end_date date,
             total_amount decimal,
@@ -47,6 +49,7 @@ User (Farmer) 1 -> N Booking
 
 Machine 1 -> N Booking
 
+Machine 1 -> N MachineImages
 
 ## Future Enhancements
 
