@@ -4,7 +4,7 @@ A web platform for renting and sharing agricultural machinery such as tractors, 
 
 ## Team Members
 - Rohith Biradar
-- Teammate Name
+- Keerthi K V
 
 ## Tech Stack
 - React
