@@ -3,8 +3,9 @@ package com.agrirent.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "users")
@@ -34,6 +35,6 @@ public class User {
     private Role role;
 
     @CreationTimestamp
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 }
