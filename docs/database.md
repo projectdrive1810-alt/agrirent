@@ -10,7 +10,7 @@ Purpose : store user, machine, booking data
             password varchar(255),
             email varchar(100) unique,
             phone varchar(10) unique,
-            role enum,
+            role enum( user , admin),
             created_at timestamp
 
         : Machine(Entity)
@@ -35,10 +35,13 @@ Purpose : store user, machine, booking data
             id BigInt PK,
             user_id BigInt FK -> users.id,
             machine_id BigInt FK -> machines.id,
+            booking_type enum('hourly', 'daily'),
             start_date date,
             end_date date,
+            start_time time,
+            end_time time,
             total_amount decimal,
-            status enum,
+            status enum( pending , approved , rejected , active , completed ),
             created_at timestamp
 
 ## Relationships

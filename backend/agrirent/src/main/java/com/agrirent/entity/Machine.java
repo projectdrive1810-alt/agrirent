@@ -41,6 +41,7 @@ public class Machine {
     @Column(name = "hourly_rental_price")
     private BigDecimal hourlyRentalPrice;
 
+    
     private String location;
 
     @Column(name = "is_available", nullable = false)
