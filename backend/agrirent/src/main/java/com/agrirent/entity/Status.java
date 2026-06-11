@@ -1,5 +1,6 @@
 package com.agrirent.entity;
-public enum Status{
+
+public enum Status {
     PENDING,
     APPROVED,
     REJECTED,
