@@ -41,15 +41,13 @@ public class Machine {
     @Column(name = "hourly_rental_price")
     private BigDecimal hourlyRentalPrice;
 
-    
     private String location;
 
     @Column(name = "is_available", nullable = false)
     private boolean available;
 
-   @CreationTimestamp
+    @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
-
 
 }

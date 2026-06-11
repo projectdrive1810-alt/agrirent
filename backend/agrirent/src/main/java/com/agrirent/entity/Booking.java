@@ -26,15 +26,13 @@ public class Booking {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "machine_id", nullable = false)
     private Machine machine;
 
-
     @Enumerated(EnumType.STRING)
     private BookingType booking_type;
-    
+
     @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
 
@@ -51,7 +49,7 @@ public class Booking {
     private BigDecimal totalAmount;
 
     @Enumerated(EnumType.STRING)
-    private Status status ;
+    private Status status;
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
