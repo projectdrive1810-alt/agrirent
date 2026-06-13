@@ -4,6 +4,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.agrirent.dto.RegisterRequestDto;
+import com.agrirent.dto.LoginRequestDto;
 import com.agrirent.entity.User;
 import com.agrirent.entity.Role;
 import com.agrirent.repository.UserRepository;
@@ -35,4 +36,19 @@ public class UserService {
 
         userRepository.save(user);
     }
+
+   public String login(LoginRequestDto requestDto) {
+
+    User user = userRepository.findByEmail(requestDto.getEmail())
+            .orElseThrow(() -> new RuntimeException("User not found"));
+
+    if (!passwordEncoder.matches(
+            requestDto.getPassword(),
+            user.getPassword())) {
+
+        throw new RuntimeException("Invalid credentials");
+    }
+
+    return "Login Successful";
+}
 }
