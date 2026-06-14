@@ -8,15 +8,15 @@ import com.agrirent.dto.LoginRequestDto;
 import com.agrirent.entity.User;
 import com.agrirent.entity.Role;
 import com.agrirent.repository.UserRepository;
-
+import com.agrirent.service.JwtService;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
-    public final UserRepository userRepository;
-
-    public final PasswordEncoder passwordEncoder;  
+    private final UserRepository userRepository;
+    private final JwtService jwtService;
+    private final PasswordEncoder passwordEncoder;  
     
     public void registerUser(RegisterRequestDto requestDto) {
         if (userRepository.findByPhone(requestDto.getPhone()).isPresent()){
@@ -48,7 +48,6 @@ public class UserService {
 
         throw new RuntimeException("Invalid credentials");
     }
-
-    return "Login Successful";
+    return jwtService.generateToken(user.getEmail());
 }
 }
