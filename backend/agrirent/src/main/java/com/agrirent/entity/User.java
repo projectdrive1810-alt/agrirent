@@ -14,6 +14,7 @@ import org.hibernate.annotations.CreationTimestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Data
 public class User {
 
     @Id
