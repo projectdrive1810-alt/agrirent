@@ -50,9 +50,6 @@ public class JwtAuthenticationFilter
                         User user = userRepository.findByEmail(email)
                                         .orElse(null);
 
-                        System.out.println("JWT Email: " + email);
-                        System.out.println("User Found: " + user);
-
                         if (user == null) {
                                 filterChain.doFilter(request, response);
                                 return;
